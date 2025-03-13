@@ -1,5 +1,9 @@
-pipeline {
+pipeline{
     agent any
+
+    tools {
+         nodejs '1'
+    }
 
     stages {
         stage('Checkout') {
