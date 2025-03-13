@@ -13,6 +13,14 @@ pipeline{
                     url: 'https://github.com/gokutou/deneme2.git'
             }
         }
+        stage('get_version') {
+            steps {
+                script {
+                    def version = sh(script: "cat package.json | jq -r '.version'", returnStdout: true).trim()
+                    echo "Project Version: ${version}"
+                }
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
