@@ -16,7 +16,7 @@ pipeline{
         stage('get_version') {
             steps {
                 script {
-                    def version = sh(script: "cat package.json | jq -r '.version'", returnStdout: true).trim()
+                    def version = sh(script: "node -e \"console.log(require('./package.json').version)\"", returnStdout: true).trim()
                     echo "Project Version: ${version}"
                 }
             }
